@@ -1,21 +1,35 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\CommentController;
 
-<<<<<<< HEAD
-=======
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
->>>>>>> b5b341913682f0aafe2fe49ecdf59e60dd94dbe2
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function () {
+
+    Route::get('/', function () {
+        return redirect()->route('questions.index');
+    });
+    
+    Route::resource('questions', QuestionController::class);
+    
+    Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
+    Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
+    Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
+    Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
+    Route::get('/questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
+    Route::put('/questions/{question}', [QuestionController::class, 'update'])->name('questions.update');
+    Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->name('questions.destroy');
+
+    // Comment routes
+    Route::post('/questions/{question}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+require __DIR__.'/auth.php';

@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "$schema": "https://getcomposer.org/schema.json",
     "name": "laravel/laravel",
     "type": "project",
@@ -8,39 +7,19 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.31",
+        "laravel/framework": "^11.43",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "laravel/breeze": "^2.3",
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.1",
-        "phpunit/phpunit": "^11.0.1"
-=======
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
-    "require": {
-        "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
-    },
-    "require-dev": {
-        "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.0",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
->>>>>>> b5b341913682f0aafe2fe49ecdf59e60dd94dbe2
+        "pestphp/pest": "^3.7",
+        "pestphp/pest-plugin-laravel": "^3.1"
     },
     "autoload": {
         "psr-4": {
@@ -66,7 +45,6 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-<<<<<<< HEAD
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
@@ -74,9 +52,6 @@
         "dev": [
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
-=======
-            "@php artisan key:generate --ansi"
->>>>>>> b5b341913682f0aafe2fe49ecdf59e60dd94dbe2
         ]
     },
     "extra": {
@@ -89,12 +64,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-<<<<<<< HEAD
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
-=======
-            "pestphp/pest-plugin": true
->>>>>>> b5b341913682f0aafe2fe49ecdf59e60dd94dbe2
         }
     },
     "minimum-stability": "stable",
