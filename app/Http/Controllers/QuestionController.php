@@ -88,4 +88,16 @@ class QuestionController extends Controller
         $question->delete();
         return redirect()->route('questions.index')->with('success', 'Question supprimée.');
     }
+
+    public function myQuestions()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+    
+        $questions = Question::where('utilisateur_id', Auth::id())
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(10);
+        return view('questions.my', compact('questions'));
+    }
 }

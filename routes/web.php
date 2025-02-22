@@ -13,7 +13,8 @@ Route::middleware('auth')->group(function () {
     });
     
     Route::resource('questions', QuestionController::class);
-    
+    Route::get('/my-questions', [QuestionController::class, 'myQuestions'])->name('questions.my');
+
     Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
     Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
     Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');

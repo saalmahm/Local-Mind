@@ -30,6 +30,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('questions.my') }}">
+                                    <i class="fas fa-list"></i> Mes Questions
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-danger ms-2">Déconnexion</button>
